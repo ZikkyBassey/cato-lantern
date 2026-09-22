@@ -3,6 +3,10 @@
    Halloween Theme with Dark Mode
    ========================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gripen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 :root {
     --primary-orange: #ff6b35;
     --dark-orange: #d84315;
@@ -77,6 +81,50 @@ body {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
 }
+
+/* ==========================================
+   Falling Treats Animation
+   ========================================== */
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(30px) rotate(10deg); }
+    75% { transform: translateX(-30px) rotate(-10deg); }
+}
+
+.falling-treats {
+    position: fixed;
+    top: -50px;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.treat {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: fall linear forwards, sway ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.6));
+}
+
+.treat-pumpkin { --duration: 8s; animation-duration: var(--duration), 3s; }
+.treat-bat { --duration: 10s; animation-duration: var(--duration), 2.5s; }
+.treat-candy { --duration: 9s; animation-duration: var(--duration), 3.5s; }
+.treat-ghost { --duration: 12s; animation-duration: var(--duration), 4s; }
+.treat-skull { --duration: 7s; animation-duration: var(--duration), 2s; }
+.treat-spider { --duration: 11s; animation-duration: var(--duration), 3s; }
+.treat-candy-corn { --duration: 9.5s; animation-duration: var(--duration), 3.2s; }
+.treat-moon { --duration: 13s; animation-duration: var(--duration), 4.5s; }
 
 .nav-links {
     display: flex;
@@ -342,6 +390,9 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+    font-family: 'Creepster', cursive;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .hero-subtitle {
@@ -456,6 +507,9 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-family: 'Creepster', cursive;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .about-grid {
