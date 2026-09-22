@@ -50,7 +50,30 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="images/cat-o-lantern-hero.png" alt="CAT O'LANTERN - The King of Halloween" class="hero-img">
+                <svg class="hero-img" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cat O'Lantern Face -->
+                    <defs>
+                        <radialGradient id="pumpkinGlow" cx="50%" cy="30%">
+                            <stop offset="0%" style="stop-color:#ffb74d;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <!-- Pumpkin body -->
+                    <circle cx="150" cy="170" r="120" fill="url(#pumpkinGlow)" filter="drop-shadow(0 0 20px rgba(255,107,53,0.8))"/>
+                    <!-- Pumpkin stem -->
+                    <path d="M 150 40 Q 145 20 150 10 Q 155 20 150 40" fill="#2d5a2d" stroke="#1a3a1a" stroke-width="2"/>
+                    <!-- Left eye -->
+                    <ellipse cx="110" cy="140" rx="20" ry="35" fill="#000"/>
+                    <ellipse cx="110" cy="140" rx="12" ry="25" fill="#ff6b35"/>
+                    <!-- Right eye -->
+                    <ellipse cx="190" cy="140" rx="20" ry="35" fill="#000"/>
+                    <ellipse cx="190" cy="140" rx="12" ry="25" fill="#ff6b35"/>
+                    <!-- Mouth (smile) -->
+                    <path d="M 120 200 Q 150 240 180 200" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <!-- Cat ears -->
+                    <polygon points="80,80 60,20 100,70" fill="#000" filter="drop-shadow(0 0 10px rgba(0,0,0,0.8))"/>
+                    <polygon points="220,80 240,20 200,70" fill="#000" filter="drop-shadow(0 0 10px rgba(0,0,0,0.8))"/>
+                </svg>
             </div>
         </div>
     </section>
@@ -61,10 +84,47 @@
             <h2 class="section-title" style="margin-bottom: 3rem;">Meet the King</h2>
             <div class="showcase-grid">
                 <div class="showcase-item">
-                    <img src="images/cat-o-lantern-hero.png" alt="CAT O'LANTERN Face" class="showcase-img showcase-img-primary">
+                    <svg class="showcase-img showcase-img-primary" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Cat face with pumpkin -->
+                        <defs>
+                            <radialGradient id="faceGlow" cx="50%" cy="40%">
+                                <stop offset="0%" style="stop-color:#ffb74d;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#d84315;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="200" cy="200" r="150" fill="url(#faceGlow)"/>
+                        <path d="M 200 40 Q 190 20 200 10 Q 210 20 200 40" fill="#2d5a2d" stroke="#1a3a1a" stroke-width="3"/>
+                        <ellipse cx="140" cy="160" rx="35" ry="50" fill="#000"/>
+                        <circle cx="140" cy="160" r="20" fill="#ff6b35"/>
+                        <ellipse cx="260" cy="160" rx="35" ry="50" fill="#000"/>
+                        <circle cx="260" cy="160" r="20" fill="#ff6b35"/>
+                        <path d="M 140 240 L 120 260 M 200 260 Q 240 280 260 240" stroke="#ff6b35" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <polygon points="100,100 70,30 120,80" fill="#000"/>
+                        <polygon points="300,100 330,30 280,80" fill="#000"/>
+                    </svg>
                 </div>
                 <div class="showcase-item">
-                    <img src="images/cat-o-lantern-full.png" alt="CAT O'LANTERN Full" class="showcase-img showcase-img-secondary">
+                    <svg class="showcase-img showcase-img-secondary" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Moon background -->
+                        <circle cx="200" cy="100" r="80" fill="#ffb74d" opacity="0.3"/>
+                        <!-- Cat full body with pumpkin -->
+                        <ellipse cx="200" cy="300" rx="100" ry="130" fill="#ff8c42"/>
+                        <circle cx="200" cy="80" r="60" fill="#ff8c42"/>
+                        <path d="M 200 20 Q 190 0 200 -10 Q 210 0 200 20" fill="#2d5a2d"/>
+                        <!-- Eyes -->
+                        <ellipse cx="175" cy="70" rx="18" ry="28" fill="#000"/>
+                        <circle cx="175" cy="70" r="10" fill="#ff6b35"/>
+                        <ellipse cx="225" cy="70" rx="18" ry="28" fill="#000"/>
+                        <circle cx="225" cy="70" r="10" fill="#ff6b35"/>
+                        <!-- Mouth -->
+                        <path d="M 180 110 Q 200 130 220 110" stroke="#ff6b35" stroke-width="8" fill="none" stroke-linecap="round"/>
+                        <!-- Ears -->
+                        <polygon points="130,40 110,0 140,35" fill="#000"/>
+                        <polygon points="270,40 290,0 260,35" fill="#000"/>
+                        <!-- Bats flying -->
+                        <text x="80" y="150" font-size="40">🦇</text>
+                        <text x="300" y="180" font-size="40">🦇</text>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -135,43 +195,37 @@
     <!-- Tokenomics Section -->
     <section id="tokenomics" class="tokenomics">
         <div class="section-container">
-            <h2 class="section-title">Tokenomics</h2>
+            <h2 class="section-title">$CATO Tokenomics</h2>
             <div class="tokenomics-content">
-                <div class="tokenomics-chart">
-                    <div class="chart-item">
-                        <div class="chart-bar" style="--percentage: 40;">
-                            <span class="chart-label">Community</span>
-                            <span class="chart-value">40%</span>
-                        </div>
-                    </div>
-                    <div class="chart-item">
-                        <div class="chart-bar" style="--percentage: 30;">
-                            <span class="chart-label">Liquidity</span>
-                            <span class="chart-value">30%</span>
-                        </div>
-                    </div>
-                    <div class="chart-item">
-                        <div class="chart-bar" style="--percentage: 20;">
-                            <span class="chart-label">Development</span>
-                            <span class="chart-value">20%</span>
-                        </div>
-                    </div>
-                    <div class="chart-item">
-                        <div class="chart-bar" style="--percentage: 10;">
-                            <span class="chart-label">Marketing</span>
-                            <span class="chart-value">10%</span>
-                        </div>
-                    </div>
+                <div class="tokenomics-stat">
+                    <div class="stat-icon">👑</div>
+                    <h3>Total Supply</h3>
+                    <p class="stat-value">666,666,666</p>
+                    <p class="stat-label">$CATO Tokens</p>
                 </div>
-                <div class="tokenomics-info">
-                    <h3>Token Distribution</h3>
-                    <ul class="info-list">
-                        <li><strong>Total Supply:</strong> 666,666,666 $CATO</li>
-                        <li><strong>Blockchain:</strong> Solana (SPL Token)</li>
-                        <li><strong>Contract:</strong> GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump</li>
-                        <li><strong>Community Rewards:</strong> Staking & Airdrops</li>
-                        <li><strong>Tax:</strong> 0% Buy • 5% Sell (to LP)</li>
-                    </ul>
+                <div class="tokenomics-stat">
+                    <div class="stat-icon">⚡</div>
+                    <h3>Blockchain</h3>
+                    <p class="stat-value">Solana</p>
+                    <p class="stat-label">SPL Token Standard</p>
+                </div>
+                <div class="tokenomics-stat">
+                    <div class="stat-icon">🔥</div>
+                    <h3>Tax Structure</h3>
+                    <p class="stat-value">0% Buy</p>
+                    <p class="stat-label">5% Sell (to LP)</p>
+                </div>
+                <div class="tokenomics-stat">
+                    <div class="stat-icon">💎</div>
+                    <h3>Rewards</h3>
+                    <p class="stat-value">Staking & Airdrops</p>
+                    <p class="stat-label">Community Driven</p>
+                </div>
+            </div>
+            <div class="contract-section">
+                <p class="contract-title">Contract Address</p>
+                <div class="contract-box">
+                    <code>GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump</code>
                 </div>
             </div>
         </div>
