@@ -1,11 +1,10 @@
 /* ==========================================
-   CAT O'LANTERN - Styles
+   CAT O'LANTERN - Styles with Animations
    Halloween Theme with Dark Mode
    ========================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gripen&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 :root {
     --primary-orange: #ff6b35;
@@ -16,7 +15,6 @@
     --card-bg: #1a1a1a;
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
-    --accent-purple: #9d4edd;
     --accent-green: #00d9ff;
     --shadow: 0 0 20px rgba(255, 107, 53, 0.3);
 }
@@ -37,6 +35,93 @@ body {
     color: var(--text-primary);
     overflow-x: hidden;
     background-attachment: fixed;
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
+    50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.8); }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        box-shadow: 0 0 50px rgba(255, 107, 53, 0.6);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 80px rgba(255, 107, 53, 0.9);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes zoomInExplode {
+    0% {
+        transform: scale(0.1) rotate(-10deg);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 1;
+        filter: blur(0px);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes scareFlash {
+    0%, 100% { filter: brightness(1) saturate(1); }
+    25% { filter: brightness(1.3) saturate(1.5); }
+    50% { filter: brightness(0.8) saturate(0.8); }
+    75% { filter: brightness(1.2) saturate(1.4); }
 }
 
 /* ==========================================
@@ -76,55 +161,6 @@ body {
     font-size: 2rem;
     animation: float 3s ease-in-out infinite;
 }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-}
-
-/* ==========================================
-   Falling Treats Animation
-   ========================================== */
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-    }
-}
-
-@keyframes sway {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    25% { transform: translateX(30px) rotate(10deg); }
-    75% { transform: translateX(-30px) rotate(-10deg); }
-}
-
-.falling-treats {
-    position: fixed;
-    top: -50px;
-    width: 100%;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 100;
-    overflow: hidden;
-}
-
-.treat {
-    position: absolute;
-    font-size: 2rem;
-    opacity: 0.8;
-    animation: fall linear forwards, sway ease-in-out infinite;
-    filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.6));
-}
-
-.treat-pumpkin { --duration: 8s; animation-duration: var(--duration), 3s; }
-.treat-bat { --duration: 10s; animation-duration: var(--duration), 2.5s; }
-.treat-candy { --duration: 9s; animation-duration: var(--duration), 3.5s; }
-.treat-ghost { --duration: 12s; animation-duration: var(--duration), 4s; }
-.treat-skull { --duration: 7s; animation-duration: var(--duration), 2s; }
-.treat-spider { --duration: 11s; animation-duration: var(--duration), 3s; }
-.treat-candy-corn { --duration: 9.5s; animation-duration: var(--duration), 3.2s; }
-.treat-moon { --duration: 13s; animation-duration: var(--duration), 4.5s; }
 
 .nav-links {
     display: flex;
@@ -166,210 +202,18 @@ body {
     padding: 0.75rem 1.5rem !important;
     border-radius: 50px;
     box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+    animation: glow 2s ease-in-out infinite;
 }
 
 .cta-btn:hover {
     background: var(--dark-orange) !important;
     box-shadow: 0 0 25px rgba(255, 107, 53, 0.8) !important;
-}
-
-/* ==========================================
-   Hero Images
-   ========================================== */
-
-.hero-visual {
-    animation: slideInRight 0.8s ease-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 0 50px rgba(255, 107, 53, 0.6);
-    animation: pulse 3s ease-in-out infinite;
-}
-
-/* ==========================================
-   Image Animations
-   ========================================== */
-
-@keyframes zoomInExplode {
-    0% {
-        transform: scale(0.1) rotate(-10deg);
-        opacity: 0;
-        filter: blur(20px);
-    }
-    50% {
-        transform: scale(1.1) rotate(2deg);
-        opacity: 1;
-        filter: blur(0px);
-    }
-    85% {
-        transform: scale(1.05) rotate(-1deg);
-    }
-    100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-        filter: blur(0px);
-    }
-}
-
-@keyframes explodeParticles {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--tx), var(--ty)) scale(0);
-        opacity: 0;
-    }
-}
-
-@keyframes scareFlash {
-    0%, 100% { filter: brightness(1) saturate(1); }
-    25% { filter: brightness(1.3) saturate(1.5); }
-    50% { filter: brightness(0.8) saturate(0.8); }
-    75% { filter: brightness(1.2) saturate(1.4); }
-}
-
-.showcase-img-secondary {
-    animation: zoomInExplode 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
-}
-
-.scare-flash {
-    animation: scareFlash 0.6s ease-in-out;
-}
-
-.explode-particle {
-    position: fixed;
-    pointer-events: none;
-    font-size: 2rem;
-    animation: explodeParticles 0.8s ease-out forwards;
-}
-
-.showcase-item {
-    position: relative;
-}
-
-.featured-image {
-    padding: 6rem 2rem;
-    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.showcase-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    width: 100%;
-    max-width: 1200px;
-}
-
-.showcase-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
-    transition: all 0.3s ease;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.showcase-item:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 0 60px rgba(255, 107, 53, 0.6);
-}
-
-.showcase-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, transparent 100%);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.showcase-item:hover::before {
-    opacity: 1;
-}
-
-.image-showcase {
-    max-width: 800px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.showcase-img {
-    max-width: 100%;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-.showcase-img-primary {
-    animation: fadeIn 0.8s ease-out;
-}
-
-/* Scary zoom explosion for secondary image on page load */
-.showcase-img-secondary {
-    animation: zoomInExplode 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.showcase-img:hover {
     transform: scale(1.05);
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* ==========================================
-   Hero Visual Fallback
+   Hero Section
    ========================================== */
-
-
 
 .hero {
     min-height: 100vh;
@@ -422,28 +266,6 @@ body {
     animation: slideInRight 0.8s ease-out;
 }
 
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 .hero-title {
     font-size: 4rem;
     font-weight: bold;
@@ -452,7 +274,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
     font-family: 'Creepster', cursive;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -491,9 +312,27 @@ body {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     text-decoration: none;
     display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn-primary {
@@ -503,7 +342,7 @@ body {
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.05);
     box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
 }
 
@@ -518,6 +357,15 @@ body {
     background: var(--primary-orange);
     color: var(--text-primary);
     box-shadow: 0 0 25px rgba(255, 107, 53, 0.6);
+    transform: scale(1.05);
+}
+
+.hero-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(255, 107, 53, 0.6);
+    animation: pulse 3s ease-in-out infinite;
 }
 
 .token-contract {
@@ -526,6 +374,7 @@ body {
     padding: 1.5rem;
     border-radius: 10px;
     margin-top: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
 }
 
 .contract-label {
@@ -541,17 +390,11 @@ body {
     font-size: 0.85rem;
 }
 
-/* Pumpkin Cat Visual - Fallback when images not available */
-.pumpkin-cat {
-    display: none;
-}
-
-
 /* ==========================================
-   About Section
+   Featured Image Section
    ========================================== */
 
-.about {
+.featured-image {
     padding: 6rem 2rem;
     background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
 }
@@ -573,6 +416,75 @@ body {
     font-family: 'Creepster', cursive;
     letter-spacing: 2px;
     text-transform: uppercase;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.showcase-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.showcase-item:nth-child(1) { animation-delay: 0.1s; }
+.showcase-item:nth-child(2) { animation-delay: 0.2s; }
+
+.showcase-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 0 60px rgba(255, 107, 53, 0.6);
+}
+
+.showcase-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, transparent 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.showcase-item:hover::before {
+    opacity: 1;
+}
+
+.showcase-img {
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.showcase-img-primary {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.showcase-img-secondary {
+    animation: zoomInExplode 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ==========================================
+   About Section
+   ========================================== */
+
+.about {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
 }
 
 .about-grid {
@@ -589,10 +501,16 @@ body {
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
+    animation: fadeInUp 0.6s ease-out;
 }
 
+.about-card:nth-child(1) { animation-delay: 0.1s; }
+.about-card:nth-child(2) { animation-delay: 0.2s; }
+.about-card:nth-child(3) { animation-delay: 0.3s; }
+.about-card:nth-child(4) { animation-delay: 0.4s; }
+
 .about-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.05);
     border-color: var(--primary-orange);
     box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
     background: rgba(255, 107, 53, 0.05);
@@ -601,7 +519,13 @@ body {
 .card-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    animation: bounce 2s ease-in-out infinite;
 }
+
+.about-card:nth-child(1) .card-icon { animation-delay: 0s; }
+.about-card:nth-child(2) .card-icon { animation-delay: 0.1s; }
+.about-card:nth-child(3) .card-icon { animation-delay: 0.2s; }
+.about-card:nth-child(4) .card-icon { animation-delay: 0.3s; }
 
 .about-card h3 {
     font-size: 1.3rem;
@@ -637,7 +561,15 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: fadeInUp 0.6s ease-out;
 }
+
+.feature-item:nth-child(1) { animation-delay: 0.1s; }
+.feature-item:nth-child(2) { animation-delay: 0.2s; }
+.feature-item:nth-child(3) { animation-delay: 0.3s; }
+.feature-item:nth-child(4) { animation-delay: 0.4s; }
+.feature-item:nth-child(5) { animation-delay: 0.5s; }
+.feature-item:nth-child(6) { animation-delay: 0.6s; }
 
 .feature-item::before {
     content: '';
@@ -655,7 +587,7 @@ body {
 }
 
 .feature-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.03);
     border-color: var(--primary-orange);
     box-shadow: 0 0 25px rgba(255, 107, 53, 0.3);
 }
@@ -696,7 +628,13 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: fadeInUp 0.6s ease-out;
 }
+
+.tokenomics-stat:nth-child(1) { animation-delay: 0.1s; }
+.tokenomics-stat:nth-child(2) { animation-delay: 0.2s; }
+.tokenomics-stat:nth-child(3) { animation-delay: 0.3s; }
+.tokenomics-stat:nth-child(4) { animation-delay: 0.4s; }
 
 .tokenomics-stat::before {
     content: '';
@@ -710,7 +648,7 @@ body {
 }
 
 .tokenomics-stat:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.05);
     border-color: var(--primary-orange);
     box-shadow: 0 0 40px rgba(255, 107, 53, 0.4);
     background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(0, 217, 255, 0.12) 100%);
@@ -732,11 +670,6 @@ body {
 .tokenomics-stat:nth-child(2) .stat-icon { animation-delay: 0.2s; }
 .tokenomics-stat:nth-child(3) .stat-icon { animation-delay: 0.4s; }
 .tokenomics-stat:nth-child(4) .stat-icon { animation-delay: 0.6s; }
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
 
 .tokenomics-stat h3 {
     font-size: 1.2rem;
@@ -766,6 +699,7 @@ body {
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
+    animation: fadeInUp 0.6s ease-out 0.5s both;
 }
 
 .contract-title {
@@ -807,8 +741,7 @@ body {
     font-size: 1.2rem;
     color: var(--text-secondary);
     margin-bottom: 3rem;
-    font-family: 'Gripen', cursive;
-    letter-spacing: 0.5px;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
 }
 
 .social-links {
@@ -836,7 +769,12 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.6s ease-out;
 }
+
+.social-btn:nth-child(1) { animation-delay: 0.1s; }
+.social-btn:nth-child(2) { animation-delay: 0.2s; }
+.social-btn:nth-child(3) { animation-delay: 0.3s; }
 
 .social-btn::before {
     content: '';
@@ -859,7 +797,6 @@ body {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* Twitter/X Button */
 .social-btn-x {
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     color: #ffffff;
@@ -873,7 +810,6 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 107, 53, 0.5);
 }
 
-/* Telegram Button */
 .social-btn-telegram {
     background: linear-gradient(135deg, #0088cc 0%, #005fa3 100%);
     color: #ffffff;
@@ -886,7 +822,6 @@ body {
     box-shadow: 0 0 30px rgba(0, 136, 204, 0.6), 0 0 15px rgba(0, 217, 255, 0.4);
 }
 
-/* DexScreener Button */
 .social-btn-dexscreener {
     background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
     color: #ffffff;
@@ -913,6 +848,7 @@ body {
 
 .contract-copy {
     margin-top: 3rem;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
 .copy-box {
@@ -925,6 +861,12 @@ body {
     justify-content: space-between;
     max-width: 600px;
     margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.copy-box:hover {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
+    border-color: var(--accent-green);
 }
 
 .copy-box code {
@@ -952,6 +894,7 @@ body {
 .copy-btn:hover {
     background: var(--dark-orange);
     box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+    transform: scale(1.05);
 }
 
 /* ==========================================
@@ -1007,7 +950,6 @@ body {
 
     .tokenomics-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
 
     .social-links {
@@ -1016,7 +958,8 @@ body {
 
     .social-btn {
         flex-direction: column;
-        padding: 0.75rem 1.5rem;
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
     }
 
     .copy-box {
@@ -1027,24 +970,6 @@ body {
     .copy-box code {
         margin-right: 0;
         text-align: center;
-    }
-
-    .featured-image {
-        min-height: 300px;
-        padding: 2rem;
-    }
-
-    .image-showcase {
-        max-width: 100%;
-    }
-
-    .showcase-grid {
-        gap: 2rem;
-    }
-
-    .showcase-item {
-        aspect-ratio: auto;
-        min-height: 300px;
     }
 }
 
