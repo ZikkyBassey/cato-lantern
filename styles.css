@@ -149,12 +149,53 @@ body {
    ========================================== */
 
 .featured-image {
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 500px;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.showcase-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.showcase-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 0 60px rgba(255, 107, 53, 0.6);
+}
+
+.showcase-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, transparent 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.showcase-item:hover::before {
+    opacity: 1;
 }
 
 .image-showcase {
@@ -168,15 +209,35 @@ body {
 .showcase-img {
     max-width: 100%;
     height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 20px;
-    box-shadow: 0 0 60px rgba(255, 107, 53, 0.8);
     transition: all 0.3s ease;
-    animation: slideInUp 0.8s ease-out;
+    animation: fadeInScale 0.8s ease-out;
+}
+
+.showcase-img-primary {
+    animation-delay: 0s;
+}
+
+.showcase-img-secondary {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .showcase-img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 80px rgba(255, 107, 53, 1);
+    transform: scale(1.05);
 }
 
 @keyframes slideInUp {
@@ -202,25 +263,33 @@ body {
     align-items: center;
     justify-content: center;
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 50%, var(--dark-bg) 100%);
     position: relative;
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
+.hero-background {
     position: absolute;
-    top: -50%;
-    right: -50%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-    animation: glow 8s ease-in-out infinite;
+    background-image: url('images/cat-o-lantern-full.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 0;
+    opacity: 0.35;
 }
 
-@keyframes glow {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.75) 0%, rgba(5, 5, 5, 0.85) 100%);
+    z-index: 1;
 }
 
 .hero-content {
@@ -230,7 +299,8 @@ body {
     gap: 4rem;
     align-items: center;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: 100%;
 }
 
 .hero-text {
@@ -776,6 +846,15 @@ body {
 
     .image-showcase {
         max-width: 100%;
+    }
+
+    .showcase-grid {
+        gap: 2rem;
+    }
+
+    .showcase-item {
+        aspect-ratio: auto;
+        min-height: 300px;
     }
 }
 
