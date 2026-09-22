@@ -117,11 +117,30 @@ body {
     }
 }
 
-@keyframes scareFlash {
-    0%, 100% { filter: brightness(1) saturate(1); }
-    25% { filter: brightness(1.3) saturate(1.5); }
-    50% { filter: brightness(0.8) saturate(0.8); }
-    75% { filter: brightness(1.2) saturate(1.4); }
+@keyframes spinBorder {
+    0% { border-color: rgba(255, 107, 53, 0.3); transform: rotate(0deg); }
+    50% { border-color: var(--primary-orange); }
+    100% { border-color: rgba(255, 107, 53, 0.3); transform: rotate(5deg); }
+}
+
+@keyframes slideInNumber {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
 }
 
 /* ==========================================
@@ -622,13 +641,13 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 0.6s ease-out;
+    animation: fadeInUp 0.6s ease-out, spinBorder 3s ease-in-out infinite;
 }
 
-.tokenomics-stat:nth-child(1) { animation-delay: 0.1s; }
-.tokenomics-stat:nth-child(2) { animation-delay: 0.2s; }
-.tokenomics-stat:nth-child(3) { animation-delay: 0.3s; }
-.tokenomics-stat:nth-child(4) { animation-delay: 0.4s; }
+.tokenomics-stat:nth-child(1) { animation-delay: 0.1s, 0s; }
+.tokenomics-stat:nth-child(2) { animation-delay: 0.2s, 0.3s; }
+.tokenomics-stat:nth-child(3) { animation-delay: 0.3s, 0.6s; }
+.tokenomics-stat:nth-child(4) { animation-delay: 0.4s, 0.9s; }
 
 .tokenomics-stat::before {
     content: '';
@@ -644,8 +663,8 @@ body {
 .tokenomics-stat:hover {
     transform: translateY(-10px) scale(1.05);
     border-color: var(--primary-orange);
-    box-shadow: 0 0 40px rgba(255, 107, 53, 0.4);
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(0, 217, 255, 0.12) 100%);
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.4), inset 0 0 20px rgba(255, 107, 53, 0.1);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.25) 0%, rgba(0, 217, 255, 0.15) 100%);
 }
 
 .tokenomics-stat:hover::before {
@@ -684,6 +703,8 @@ body {
     font-weight: bold;
     margin-bottom: 0.5rem;
     text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+    animation: slideInNumber 0.6s ease-out, bounce 2s ease-in-out infinite 0.6s;
+    display: inline-block;
 }
 
 .stat-label {
