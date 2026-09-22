@@ -1,0 +1,8 @@
+Image assets folder for CAT O'LANTERN website.
+
+The two images you provided:
+1. Cat face with pumpkin head - used for hero section
+2. Full pumpkin cat with moon background - used as main visual
+
+To use actual image files, replace the SVG placeholders in index.html with image paths like:
+<img src="images/cat-pumpkin-hero.png" alt="CAT O'LANTERN">
