@@ -904,11 +904,6 @@ body {
     margin: 0.5rem 0;
 }
 
-.disclaimer {
-    font-size: 0.9rem;
-    color: var(--accent-green);
-}
-
 /* ==========================================
    Responsive Design
    ========================================== */
