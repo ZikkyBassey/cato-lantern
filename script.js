@@ -197,3 +197,56 @@ console.log('%cThe King of Halloween has arrived.',
     'font-size: 14px; color: #00d9ff; font-weight: bold;');
 console.log('%c$CATO on Solana', 
     'font-size: 12px; color: #cccccc;');
+
+
+// ==========================================
+// Page Load Scary Animation
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait for images to load
+    setTimeout(() => {
+        const latestImage = document.querySelector('.showcase-img-secondary');
+        const showcaseItem = document.querySelector('.showcase-item:nth-child(2)');
+        
+        if (latestImage && showcaseItem) {
+            // Add scare flash effect
+            document.body.classList.add('scare-flash');
+            
+            // Create explosion particles
+            createExplosion(showcaseItem);
+            
+            // Log scary message
+            console.log('%c🎃 CAT O\'LANTERN HAS AWAKENED! 🎃', 'font-size: 20px; color: #ff6b35; font-weight: bold;');
+        }
+    }, 800);
+});
+
+function createExplosion(element) {
+    const rect = element.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const emojis = ['💀', '🔥', '👻', '🦇', '⚡', '🕷️', '🌙', '🎃'];
+    
+    for (let i = 0; i < 12; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'explode-particle';
+        particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        // Random explosion direction
+        const angle = (Math.PI * 2 * i) / 12;
+        const velocity = 80 + Math.random() * 100;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        particle.style.left = centerX + 'px';
+        particle.style.top = centerY + 'px';
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => particle.remove(), 800);
+    }
+}

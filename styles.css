@@ -193,8 +193,66 @@ body {
 }
 
 /* ==========================================
-   Featured Image Section
+   Image Animations
    ========================================== */
+
+@keyframes zoomInExplode {
+    0% {
+        transform: scale(0.1) rotate(-10deg);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 1;
+        filter: blur(0px);
+    }
+    85% {
+        transform: scale(1.05) rotate(-1deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+@keyframes explodeParticles {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes scareFlash {
+    0%, 100% { filter: brightness(1) saturate(1); }
+    25% { filter: brightness(1.3) saturate(1.5); }
+    50% { filter: brightness(0.8) saturate(0.8); }
+    75% { filter: brightness(1.2) saturate(1.4); }
+}
+
+.showcase-img-secondary {
+    animation: zoomInExplode 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+.scare-flash {
+    animation: scareFlash 0.6s ease-in-out;
+}
+
+.explode-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 2rem;
+    animation: explodeParticles 0.8s ease-out forwards;
+}
+
+.showcase-item {
+    position: relative;
+}
 
 .featured-image {
     padding: 6rem 2rem;
