@@ -207,36 +207,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Wait for images to load
     setTimeout(() => {
         const latestImage = document.querySelector('.showcase-img-secondary');
-        const showcaseItem = document.querySelector('.showcase-item:nth-child(2)');
+        const showcaseContainer = document.querySelector('.showcase-grid');
         
-        if (latestImage && showcaseItem) {
+        if (latestImage && showcaseContainer) {
+            // Get the actual position of the image
+            const rect = latestImage.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
             // Add scare flash effect
             document.body.classList.add('scare-flash');
             
             // Create explosion particles
-            createExplosion(showcaseItem);
+            createExplosion(centerX, centerY);
             
             // Log scary message
             console.log('%c🎃 CAT O\'LANTERN HAS AWAKENED! 🎃', 'font-size: 20px; color: #ff6b35; font-weight: bold;');
         }
-    }, 800);
+    }, 500);
 });
 
-function createExplosion(element) {
-    const rect = element.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
+function createExplosion(centerX, centerY) {
     const emojis = ['💀', '🔥', '👻', '🦇', '⚡', '🕷️', '🌙', '🎃'];
     
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 16; i++) {
         const particle = document.createElement('div');
         particle.className = 'explode-particle';
         particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
         
         // Random explosion direction
-        const angle = (Math.PI * 2 * i) / 12;
-        const velocity = 80 + Math.random() * 100;
+        const angle = (Math.PI * 2 * i) / 16;
+        const velocity = 100 + Math.random() * 150;
         const tx = Math.cos(angle) * velocity;
         const ty = Math.sin(angle) * velocity;
         
@@ -244,9 +245,10 @@ function createExplosion(element) {
         particle.style.top = centerY + 'px';
         particle.style.setProperty('--tx', tx + 'px');
         particle.style.setProperty('--ty', ty + 'px');
+        particle.style.fontSize = (1.5 + Math.random()) + 'rem';
         
         document.body.appendChild(particle);
         
-        setTimeout(() => particle.remove(), 800);
+        setTimeout(() => particle.remove(), 1000);
     }
 }
