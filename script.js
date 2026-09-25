@@ -252,3 +252,49 @@ function createExplosion(centerX, centerY) {
         setTimeout(() => particle.remove(), 1000);
     }
 }
+
+
+// ==========================================
+// Merch Coming Soon Modal
+// ==========================================
+
+function showComingSoon(button) {
+    const modal = document.getElementById('comingSoonModal');
+    const card = button.closest('.merch-card');
+    const image = card.querySelector('.merch-img');
+    
+    // Add grow/shrink animation to image
+    image.style.animation = 'growShrink 0.8s ease-in-out';
+    
+    // Show modal
+    modal.classList.add('active');
+    
+    // Reset animation after it completes
+    setTimeout(() => {
+        image.style.animation = '';
+    }, 800);
+}
+
+function closeComingSoon() {
+    const modal = document.getElementById('comingSoonModal');
+    modal.classList.remove('active');
+}
+
+// Close modal when clicking outside
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('comingSoonModal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeComingSoon();
+            }
+        });
+    }
+    
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeComingSoon();
+        }
+    });
+});
