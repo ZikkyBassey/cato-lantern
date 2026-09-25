@@ -298,3 +298,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ==========================================
+// Spooky Pumpkin Reveal on Interaction
+// ==========================================
+
+function showSpookyPumpkin() {
+    // Add screen shake effect
+    document.body.classList.add('spooky-reveal');
+    
+    // Create pumpkin overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'spooky-pumpkin-overlay';
+    
+    const img = document.createElement('img');
+    img.src = 'images/spookypumpkin.png';
+    img.alt = 'Spooky Pumpkin';
+    
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+    
+    // Remove after animation
+    setTimeout(() => {
+        document.body.classList.remove('spooky-reveal');
+        overlay.remove();
+    }, 3500);
+}
+
+// Trigger spooky pumpkin on interactive elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Buttons
+    const buttons = document.querySelectorAll('.btn, .merch-btn, .social-btn, .copy-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Don't show for copy button (has its own notification)
+            if (!btn.classList.contains('copy-btn')) {
+                showSpookyPumpkin();
+            }
+        });
+    });
+    
+    // Cards hover
+    const cards = document.querySelectorAll('.about-card, .feature-item, .tokenomics-stat, .merch-card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            showSpookyPumpkin();
+        });
+    });
+    
+    // Showcase items
+    const showcaseItems = document.querySelectorAll('.showcase-item');
+    showcaseItems.forEach(item => {
+        item.addEventListener('click', () => {
+            showSpookyPumpkin();
+        });
+    });
+    
+    // Logo click
+    const logo = document.querySelector('.logo-text');
+    if (logo) {
+        logo.addEventListener('click', () => {
+            showSpookyPumpkin();
+        });
+    }
+});
