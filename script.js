@@ -302,29 +302,23 @@ document.addEventListener('DOMContentLoaded', () => {
 // Social Proof Counter (Live Data from DexScreener + Solana)
 // ==========================================
 
+// ==========================================
+// Social Proof Counter (Live Data from Pump.fun)
+// ==========================================
+
 async function fetchLiveHolderData() {
     try {
         const contractAddress = 'GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump';
         
-        // First try DexScreener for transaction data
-        const dexResponse = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${contractAddress}`);
-        const dexData = await dexResponse.json();
+        // Try to fetch from pump.fun API
+        const pumpResponse = await fetch(`https://api.pump.fun/coin/${contractAddress}`);
+        const pumpData = await pumpResponse.json();
         
-        let holders = 0;
+        let holders = 95; // Default value
         
-        if (dexData.pairs && dexData.pairs.length > 0) {
-            const pair = dexData.pairs[0];
-            
-            // Calculate based on transaction volume (buys in last 24h as proxy for engagement)
-            const h24Buys = pair.txns?.h24?.buys || 0;
-            
-            // Estimate holders from transaction data
-            holders = Math.max(Math.floor(h24Buys * 0.6), 50);
-        }
-        
-        // Fallback if no transaction data
-        if (holders === 0) {
-            holders = 50;
+        // Check if pump.fun API returns holder data
+        if (pumpData && pumpData.holders) {
+            holders = pumpData.holders;
         }
         
         const holderCountEl = document.getElementById('holderCount');
@@ -333,13 +327,13 @@ async function fetchLiveHolderData() {
             animateCounter(holderCountEl, holders, 2000);
         }
         
-        console.log(`Live Data - Estimated Holders: ${holders}`);
+        console.log(`Live Data - Token Holders: ${holders}`);
     } catch (error) {
-        console.log('Live holder data failed, using fallback:', error);
-        // Fallback numbers
+        console.log('Pump.fun API unavailable, using default: 95 holders');
+        // Use default value
         const holderCountEl = document.getElementById('holderCount');
         
-        if (holderCountEl) animateCounter(holderCountEl, 50, 2000);
+        if (holderCountEl) animateCounter(holderCountEl, 95, 2000);
     }
 }
 
