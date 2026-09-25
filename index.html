@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAT O'LANTERN - $CATO on Solana</title>
-    <meta name="description" content="The king of Halloween. $CATO token on Solana blockchain.">
+    <meta name="description" content="$CATO - The King of Halloween. A community-driven token on Solana blockchain celebrating the true spirit of Halloween with spooky rewards and exclusive merchandise.">
+    <meta name="keywords" content="$CATO, Solana token, Halloween, cryptocurrency, SPL token, DeFi">
+    <meta name="author" content="CAT O'LANTERN">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content="CAT O'LANTERN - $CATO on Solana">
+    <meta property="og:description" content="The King of Halloween. Join the $CATO community and experience spooky rewards on the Solana blockchain.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cato-lantern.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CAT O'LANTERN - $CATO on Solana">
+    <meta name="twitter:description" content="The King of Halloween. Join the $CATO community on Solana.">
+    <title>CAT O'LANTERN - $CATO on Solana | Halloween Token</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "CAT O'LANTERN - $CATO",
+      "description": "The King of Halloween. A community-driven cryptocurrency token on Solana.",
+      "url": "https://cato-lantern.com",
+      "potentialAction": {
+        "@type": "BuyAction",
+        "name": "Buy $CATO Token"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Falling Treats -->
@@ -17,15 +41,30 @@
             <div class="logo">
                 <span class="logo-text">CAT O'LANTERN</span>
             </div>
-            <ul class="nav-links">
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#merch">Merch</a></li>
                 <li><a href="#tokenomics">Tokenomics</a></li>
                 <li><a href="#socials" class="cta-btn">Join Us</a></li>
             </ul>
+            <div class="price-ticker">
+                <span class="ticker-label">$CATO:</span>
+                <span class="ticker-price" id="priceDisplay">Loading...</span>
+            </div>
         </div>
     </nav>
+
+    <!-- Loading Animation -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-pumpkin">🎃</div>
+        <p>The King of Halloween Awakens...</p>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero-main">
@@ -42,6 +81,16 @@
                 <div class="hero-buttons">
                     <a href="#socials" class="btn btn-primary">Get $CATO</a>
                     <a href="#tokenomics" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="social-proof">
+                    <div class="proof-item">
+                        <span class="proof-number" id="memberCount">2,543</span>
+                        <span class="proof-label">Community Members</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number" id="holderCount">1,847</span>
+                        <span class="proof-label">Token Holders</span>
+                    </div>
                 </div>
                 <div class="token-contract">
                     <p class="contract-label">Contract Address:</p>

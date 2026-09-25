@@ -198,6 +198,142 @@ console.log('%cThe King of Halloween has arrived.',
 console.log('%c$CATO on Solana', 
     'font-size: 12px; color: #cccccc;');
 
+// ==========================================
+// Loading Screen
+// ==========================================
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.pointerEvents = 'none';
+        }
+    }, 2000);
+});
+
+// ==========================================
+// Mobile Menu Toggle
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+});
+
+// ==========================================
+// Live Price Ticker (DexScreener API)
+// ==========================================
+
+async function fetchCATOPrice() {
+    try {
+        const contractAddress = 'GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump';
+        const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${contractAddress}`);
+        const data = await response.json();
+        
+        if (data.pairs && data.pairs.length > 0) {
+            const pair = data.pairs[0];
+            const price = parseFloat(pair.priceUsd);
+            const priceDisplay = document.getElementById('priceDisplay');
+            
+            if (priceDisplay) {
+                if (price > 0) {
+                    priceDisplay.textContent = '$' + price.toFixed(6);
+                    priceDisplay.style.color = price > 0 ? '#1a6b3f' : '#ff0000';
+                } else {
+                    priceDisplay.textContent = 'N/A';
+                }
+            }
+        }
+    } catch (error) {
+        console.log('Price ticker: API unavailable or token not listed yet');
+        const priceDisplay = document.getElementById('priceDisplay');
+        if (priceDisplay) {
+            priceDisplay.textContent = 'Not listed yet';
+        }
+    }
+}
+
+// Fetch price on load and refresh every 30 seconds
+document.addEventListener('DOMContentLoaded', () => {
+    fetchCATOPrice();
+    setInterval(fetchCATOPrice, 30000);
+});
+
+// ==========================================
+// Social Proof Counter (Animated Numbers)
+// ==========================================
+
+function animateCounter(element, target, duration = 2000) {
+    let current = 0;
+    const increment = target / (duration / 16);
+    
+    const counter = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(counter);
+        }
+        element.textContent = Math.floor(current).toLocaleString();
+    }, 16);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Observe when section comes into view
+    const observerOptions = {
+        threshold: 0.5
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entry.target.dataset.animated = 'true';
+                
+                const memberCount = document.getElementById('memberCount');
+                const holderCount = document.getElementById('holderCount');
+                
+                if (memberCount) {
+                    animateCounter(memberCount, 2543, 2000);
+                }
+                if (holderCount) {
+                    animateCounter(holderCount, 1847, 2000);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        observer.observe(heroSection);
+    }
+});
+
+// ==========================================
+// Animated Background Particles
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fogLayer = document.createElement('div');
+    fogLayer.className = 'fog-layer';
+    document.body.insertBefore(fogLayer, document.body.firstChild);
+});
+
+
 
 // ==========================================
 // Page Load Scary Animation
