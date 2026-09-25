@@ -1476,9 +1476,27 @@ body.spooky-reveal {
    Loading Screen
    ========================================== */
 
-@keyframes loading-pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.8; }
+@keyframes loading-bounce-zoom {
+    0% {
+        transform: scale(0.5) translateY(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.2) translateY(-30px);
+    }
+    50% {
+        transform: scale(1) translateY(0);
+    }
+    75% {
+        transform: scale(1.15) translateY(-20px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes loading-fade-out {
@@ -1503,16 +1521,22 @@ body.spooky-reveal {
 }
 
 .loading-pumpkin {
-    font-size: 120px;
-    animation: loading-pulse 1.5s ease-in-out infinite;
-    margin-bottom: 2rem;
+    font-size: 80px;
+    font-family: 'Creepster', cursive;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: var(--crimson);
+    text-transform: uppercase;
+    animation: loading-bounce-zoom 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    text-shadow: -3px 3px 0 rgba(0, 0, 0, 0.8), 0 0 30px rgba(139, 21, 56, 0.6);
 }
 
 .loading-screen p {
-    font-size: 1.5rem;
-    color: var(--crimson);
-    font-family: 'Creepster', cursive;
+    font-size: 1.2rem;
+    color: var(--accent-green);
+    font-family: 'Gripen', cursive;
     letter-spacing: 2px;
+    margin-top: 2rem;
     animation: subtle-flicker 3s ease-in-out infinite;
 }
 
