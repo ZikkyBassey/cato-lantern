@@ -201,6 +201,58 @@ body {
     100% { transform: translateY(0) scaleX(1); filter: brightness(1); }
 }
 
+@keyframes glitchEffect {
+    0% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); }
+    20% { clip-path: polygon(0% 20%, 100% 0%, 100% 80%, 0% 100%); transform: translateX(2px); }
+    40% { clip-path: polygon(0% 40%, 100% 20%, 100% 60%, 0% 80%); transform: translateX(-2px); }
+    60% { clip-path: polygon(0% 10%, 100% 30%, 100% 70%, 0% 90%); transform: translateX(1px); }
+    80% { clip-path: polygon(0% 30%, 100% 10%, 100% 90%, 0% 70%); transform: translateX(-1px); }
+    100% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); transform: translateX(0); }
+}
+
+@keyframes skullStare {
+    0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0px #ff0000); }
+    25% { transform: scale(1.05) rotate(-1deg); filter: drop-shadow(0 0 10px #ff0000); }
+    50% { transform: scale(1.08) rotate(1deg); filter: drop-shadow(0 0 20px #ff0000); }
+    75% { transform: scale(1.05) rotate(-1deg); filter: drop-shadow(0 0 10px #ff0000); }
+}
+
+@keyframes rottenDecay {
+    0%, 100% { filter: hue-rotate(0deg) saturate(1) brightness(1); }
+    25% { filter: hue-rotate(10deg) saturate(0.8) brightness(0.95); }
+    50% { filter: hue-rotate(20deg) saturate(0.6) brightness(0.9); }
+    75% { filter: hue-rotate(10deg) saturate(0.8) brightness(0.92); }
+}
+
+@keyframes horrorShake {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-3px, -3px) rotate(-0.5deg); }
+    20% { transform: translate(3px, 3px) rotate(0.5deg); }
+    30% { transform: translate(-4px, 2px) rotate(-1deg); }
+    40% { transform: translate(4px, -2px) rotate(1deg); }
+    50% { transform: translate(-2px, -4px) rotate(-0.5deg); }
+    60% { transform: translate(2px, 4px) rotate(0.5deg); }
+    70% { transform: translate(-3px, 3px) rotate(-0.5deg); }
+    80% { transform: translate(3px, -3px) rotate(0.5deg); }
+    90% { transform: translate(-1px, -1px) rotate(-0.2deg); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    5% { opacity: 0.8; }
+    10% { opacity: 1; }
+    15% { opacity: 0.7; }
+    20% { opacity: 1; }
+    25% { opacity: 0.6; }
+    30% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@keyframes evilEyeGlow {
+    0%, 100% { box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.6); }
+    50% { box-shadow: inset 0 0 40px rgba(255, 0, 0, 0.9), 0 0 60px rgba(255, 0, 0, 1), 0 0 100px rgba(139, 0, 0, 0.8); }
+}
+
 /* ==========================================
    Navigation
    ========================================== */
@@ -211,8 +263,8 @@ body {
     z-index: 1000;
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 3px solid rgba(255, 0, 0, 0.5);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.15);
+    border-bottom: 3px dashed rgba(255, 0, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
 }
 
 .nav-container {
@@ -337,15 +389,18 @@ body {
     font-size: 4rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, #ff0000 0%, #ff6b35 50%, #8b0000 100%);
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 50%, #1a0000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-family: 'Creepster', cursive;
     letter-spacing: 3px;
     text-transform: uppercase;
-    animation: bloodDrip 2s ease-in-out infinite;
-    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6));
+    animation: glitchEffect 0.4s ease-in-out infinite, flicker 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+    text-shadow: 
+        3px 3px 0px #8b0000,
+        6px 6px 0px rgba(255, 0, 0, 0.5);
 }
 
 .hero-subtitle {
@@ -433,9 +488,8 @@ body {
     max-width: 100%;
     height: auto;
     border-radius: 20px;
-    box-shadow: 0 0 80px rgba(255, 0, 0, 0.7), 0 0 120px rgba(255, 107, 53, 0.5);
-    animation: pulse 3s ease-in-out infinite;
-    border: 3px solid rgba(255, 0, 0, 0.3);
+    animation: skullStare 3s ease-in-out infinite, rottenDecay 10s ease-in-out infinite;
+    border: 3px dashed rgba(255, 0, 0, 0.4);
 }
 
 .token-contract {
@@ -479,15 +533,18 @@ body {
     font-weight: bold;
     text-align: center;
     margin-bottom: 4rem;
-    background: linear-gradient(135deg, #ff0000 0%, #ff6b35 50%, #8b0000 100%);
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 50%, #1a0000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-family: 'Creepster', cursive;
     letter-spacing: 2px;
     text-transform: uppercase;
-    animation: fadeInUp 0.6s ease-out, bloodDrip 2s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+    animation: fadeInUp 0.6s ease-out, glitchEffect 0.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.7));
+    text-shadow: 
+        2px 2px 0px #8b0000,
+        4px 4px 0px rgba(255, 0, 0, 0.4);
 }
 
 .showcase-grid {
@@ -502,18 +559,17 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 0 60px rgba(255, 0, 0, 0.4);
     transition: all 0.3s ease;
     animation: fadeInUp 0.6s ease-out;
-    border: 2px solid rgba(255, 0, 0, 0.3);
+    border: 3px dashed rgba(255, 0, 0, 0.5);
 }
 
 .showcase-item:nth-child(1) { animation-delay: 0.1s; }
 .showcase-item:nth-child(2) { animation-delay: 0.2s; }
 
 .showcase-item:hover {
-    transform: translateY(-20px) scale(1.05);
-    box-shadow: 0 0 80px rgba(255, 0, 0, 0.8), inset 0 0 40px rgba(255, 0, 0, 0.3);
+    transform: translateY(-20px);
+    animation: glitchEffect 0.3s ease-in-out;
 }
 
 .showcase-item::before {
@@ -569,7 +625,7 @@ body {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
-    border: 2px solid rgba(255, 0, 0, 0.3);
+    border: 3px dashed rgba(255, 0, 0, 0.4);
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -582,32 +638,32 @@ body {
 .about-card:nth-child(4) { animation-delay: 0.4s; }
 
 .about-card:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-10px);
     border-color: #ff0000;
-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
-    background: rgba(255, 0, 0, 0.08);
-    animation: creepShake 0.4s ease-in-out;
+    background: rgba(139, 0, 0, 0.2);
+    animation: horrorShake 0.3s ease-in-out;
 }
 
 .card-icon {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: bold;
-    color: var(--primary-orange);
+    color: #ff0000;
     font-family: 'Creepster', cursive;
     letter-spacing: 1px;
-    animation: bounce 2s ease-in-out infinite;
+    animation: skullStare 2s ease-in-out infinite;
 }
 
 .about-card:nth-child(1) .card-icon { animation-delay: 0s; }
-.about-card:nth-child(2) .card-icon { animation-delay: 0.1s; }
-.about-card:nth-child(3) .card-icon { animation-delay: 0.2s; }
-.about-card:nth-child(4) .card-icon { animation-delay: 0.3s; }
+.about-card:nth-child(2) .card-icon { animation-delay: 0.3s; }
+.about-card:nth-child(3) .card-icon { animation-delay: 0.6s; }
+.about-card:nth-child(4) .card-icon { animation-delay: 0.9s; }
 
 .about-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--primary-orange);
+    color: #ff0000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .about-card p {
@@ -634,7 +690,7 @@ body {
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(139, 0, 0, 0.05) 100%);
     padding: 2rem;
     border-radius: 15px;
-    border: 2px solid rgba(255, 0, 0, 0.3);
+    border: 3px dashed rgba(255, 0, 0, 0.5);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -655,7 +711,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.4), transparent);
     transition: left 0.5s ease;
 }
 
@@ -664,21 +720,21 @@ body {
 }
 
 .feature-item:hover {
-    transform: translateY(-8px) scale(1.05);
+    transform: translateY(-8px);
     border-color: #ff0000;
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.15) 0%, rgba(139, 0, 0, 0.1) 100%);
-    animation: creepShake 0.4s ease-in-out;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(139, 0, 0, 0.15) 100%);
+    animation: horrorShake 0.3s ease-in-out;
 }
 
 .feature-item h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--primary-orange);
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    color: #ff0000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 0, 0, 0.6);
     font-family: 'Creepster', cursive;
     letter-spacing: 1px;
     text-transform: uppercase;
+    animation: flicker 3s ease-in-out infinite;
 }
 
 .feature-item p {
@@ -799,15 +855,14 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(139, 0, 0, 0.05) 100%);
-    border: 2px solid rgba(255, 0, 0, 0.35);
+    border: 3px dashed rgba(255, 0, 0, 0.4);
     transition: all 0.3s ease;
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.25);
 }
 
 .merch-card:hover .merch-image-wrapper {
     border-color: #ff0000;
-    box-shadow: 0 0 70px rgba(255, 0, 0, 0.6), inset 0 0 30px rgba(255, 0, 0, 0.25);
     transform: translateY(-15px);
+    animation: horrorShake 0.3s ease-in-out;
 }
 
 .merch-img {
@@ -888,20 +943,20 @@ body {
 
 .tokenomics-stat {
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.08) 100%);
-    border: 2px solid rgba(255, 0, 0, 0.4);
+    border: 3px dashed rgba(255, 0, 0, 0.4);
     padding: 2.5rem 2rem;
     border-radius: 20px;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 0.6s ease-out, redPulse 3s ease-in-out infinite;
+    animation: fadeInUp 0.6s ease-out, rottenDecay 8s ease-in-out infinite;
 }
 
 .tokenomics-stat:nth-child(1) { animation-delay: 0.1s, 0s; }
-.tokenomics-stat:nth-child(2) { animation-delay: 0.2s, 0.3s; }
-.tokenomics-stat:nth-child(3) { animation-delay: 0.3s, 0.6s; }
-.tokenomics-stat:nth-child(4) { animation-delay: 0.4s, 0.9s; }
+.tokenomics-stat:nth-child(2) { animation-delay: 0.2s, 1s; }
+.tokenomics-stat:nth-child(3) { animation-delay: 0.3s, 2s; }
+.tokenomics-stat:nth-child(4) { animation-delay: 0.4s, 3s; }
 
 .tokenomics-stat::before {
     content: '';
@@ -915,11 +970,10 @@ body {
 }
 
 .tokenomics-stat:hover {
-    transform: translateY(-12px) scale(1.08);
+    transform: translateY(-12px);
     border-color: #ff0000;
-    box-shadow: 0 0 60px rgba(255, 0, 0, 0.7), inset 0 0 25px rgba(255, 0, 0, 0.3);
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(139, 0, 0, 0.15) 100%);
-    animation: creepShake 0.4s ease-in-out;
+    animation: horrorShake 0.3s ease-in-out;
 }
 
 .tokenomics-stat:hover::before {
@@ -945,12 +999,13 @@ body {
 
 .tokenomics-stat h3 {
     font-size: 1.2rem;
-    color: var(--primary-orange);
+    color: #ff0000;
     margin-bottom: 0.5rem;
     font-family: 'Creepster', cursive;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 0, 0, 0.6);
+    animation: flicker 2.5s ease-in-out infinite;
 }
 
 .stat-value {
@@ -970,31 +1025,30 @@ body {
 
 .contract-section {
     background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(139, 0, 0, 0.05) 100%);
-    border: 2px solid rgba(255, 0, 0, 0.5);
+    border: 3px dashed rgba(255, 0, 0, 0.4);
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
-    animation: fadeInUp 0.6s ease-out 0.5s both, evilGlow 2s ease-in-out infinite 0.5s;
-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+    animation: fadeInUp 0.6s ease-out 0.5s both;
 }
 
 .contract-title {
     font-size: 1.1rem;
-    color: var(--primary-orange);
+    color: #ff0000;
     font-family: 'Creepster', cursive;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    animation: flicker 2s ease-in-out infinite;
 }
 
 .contract-box {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     padding: 1.5rem;
     border-radius: 15px;
-    border: 2px solid rgba(255, 0, 0, 0.3);
+    border: 2px dashed rgba(255, 0, 0, 0.3);
     overflow-x: auto;
-    box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1);
 }
 
 .contract-box code {
@@ -1002,7 +1056,6 @@ body {
     color: var(--accent-green);
     font-size: 0.85rem;
     word-break: break-all;
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
 }
 
 /* ==========================================
@@ -1119,7 +1172,7 @@ body {
 
 .copy-box {
     background: var(--card-bg);
-    border: 2px solid rgba(255, 0, 0, 0.5);
+    border: 2px dashed rgba(255, 0, 0, 0.4);
     padding: 1rem;
     border-radius: 50px;
     display: flex;
@@ -1128,12 +1181,11 @@ body {
     max-width: 600px;
     margin: 0 auto;
     transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.25);
 }
 
 .copy-box:hover {
-    box-shadow: 0 0 60px rgba(255, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
-    border-color: #ff0000;
+    transform: translateY(-3px);
+    animation: horrorShake 0.2s ease-in-out;
 }
 
 .copy-box code {
@@ -1171,15 +1223,13 @@ body {
 .footer {
     padding: 2rem;
     background: var(--darker-bg);
-    border-top: 3px solid rgba(255, 0, 0, 0.6);
+    border-top: 3px dashed rgba(255, 0, 0, 0.4);
     text-align: center;
     color: var(--text-secondary);
-    box-shadow: 0 -10px 40px rgba(255, 0, 0, 0.2);
 }
 
 .footer p {
     margin: 0.5rem 0;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
 }
 
 /* ==========================================
