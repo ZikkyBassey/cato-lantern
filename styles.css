@@ -211,8 +211,8 @@ body {
     z-index: 1000;
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--primary-orange);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid rgba(255, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.15);
 }
 
 .nav-container {
@@ -433,8 +433,9 @@ body {
     max-width: 100%;
     height: auto;
     border-radius: 20px;
-    box-shadow: 0 0 50px rgba(255, 107, 53, 0.6);
+    box-shadow: 0 0 80px rgba(255, 0, 0, 0.7), 0 0 120px rgba(255, 107, 53, 0.5);
     animation: pulse 3s ease-in-out infinite;
+    border: 3px solid rgba(255, 0, 0, 0.3);
 }
 
 .token-contract {
@@ -501,17 +502,18 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.4);
     transition: all 0.3s ease;
     animation: fadeInUp 0.6s ease-out;
+    border: 2px solid rgba(255, 0, 0, 0.3);
 }
 
 .showcase-item:nth-child(1) { animation-delay: 0.1s; }
 .showcase-item:nth-child(2) { animation-delay: 0.2s; }
 
 .showcase-item:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 0 60px rgba(255, 107, 53, 0.6);
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 0 80px rgba(255, 0, 0, 0.8), inset 0 0 40px rgba(255, 0, 0, 0.3);
 }
 
 .showcase-item::before {
@@ -521,7 +523,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.25) 0%, transparent 100%);
     z-index: 1;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -629,10 +631,10 @@ body {
 }
 
 .feature-item {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 217, 255, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(139, 0, 0, 0.05) 100%);
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(255, 107, 53, 0.2);
+    border: 2px solid rgba(255, 0, 0, 0.3);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -653,7 +655,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent);
     transition: left 0.5s ease;
 }
 
@@ -662,15 +664,21 @@ body {
 }
 
 .feature-item:hover {
-    transform: translateY(-5px) scale(1.03);
-    border-color: var(--primary-orange);
-    box-shadow: 0 0 25px rgba(255, 107, 53, 0.3);
+    transform: translateY(-8px) scale(1.05);
+    border-color: #ff0000;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.15) 0%, rgba(139, 0, 0, 0.1) 100%);
+    animation: creepShake 0.4s ease-in-out;
 }
 
 .feature-item h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--primary-orange);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    font-family: 'Creepster', cursive;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .feature-item p {
@@ -790,16 +798,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 217, 255, 0.05) 100%);
-    border: 2px solid rgba(255, 107, 53, 0.3);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(139, 0, 0, 0.05) 100%);
+    border: 2px solid rgba(255, 0, 0, 0.35);
     transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.25);
 }
 
 .merch-card:hover .merch-image-wrapper {
-    border-color: var(--primary-orange);
-    box-shadow: 0 0 50px rgba(255, 107, 53, 0.5);
-    transform: translateY(-10px);
+    border-color: #ff0000;
+    box-shadow: 0 0 70px rgba(255, 0, 0, 0.6), inset 0 0 30px rgba(255, 0, 0, 0.25);
+    transform: translateY(-15px);
 }
 
 .merch-img {
@@ -879,15 +887,15 @@ body {
 }
 
 .tokenomics-stat {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(0, 217, 255, 0.08) 100%);
-    border: 2px solid rgba(255, 107, 53, 0.3);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.08) 100%);
+    border: 2px solid rgba(255, 0, 0, 0.4);
     padding: 2.5rem 2rem;
     border-radius: 20px;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 0.6s ease-out, spinBorder 3s ease-in-out infinite;
+    animation: fadeInUp 0.6s ease-out, redPulse 3s ease-in-out infinite;
 }
 
 .tokenomics-stat:nth-child(1) { animation-delay: 0.1s, 0s; }
@@ -902,15 +910,16 @@ body {
     right: -50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.15) 0%, transparent 70%);
     transition: all 0.3s ease;
 }
 
 .tokenomics-stat:hover {
-    transform: translateY(-10px) scale(1.05);
-    border-color: var(--primary-orange);
-    box-shadow: 0 0 40px rgba(255, 107, 53, 0.4), inset 0 0 20px rgba(255, 107, 53, 0.1);
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.25) 0%, rgba(0, 217, 255, 0.15) 100%);
+    transform: translateY(-12px) scale(1.08);
+    border-color: #ff0000;
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.7), inset 0 0 25px rgba(255, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(139, 0, 0, 0.15) 100%);
+    animation: creepShake 0.4s ease-in-out;
 }
 
 .tokenomics-stat:hover::before {
@@ -941,6 +950,7 @@ body {
     font-family: 'Creepster', cursive;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
 }
 
 .stat-value {
@@ -959,12 +969,13 @@ body {
 }
 
 .contract-section {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 217, 255, 0.05) 100%);
-    border: 2px solid var(--primary-orange);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(139, 0, 0, 0.05) 100%);
+    border: 2px solid rgba(255, 0, 0, 0.5);
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
-    animation: fadeInUp 0.6s ease-out 0.5s both;
+    animation: fadeInUp 0.6s ease-out 0.5s both, evilGlow 2s ease-in-out infinite 0.5s;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
 }
 
 .contract-title {
@@ -974,14 +985,16 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
 }
 
 .contract-box {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
     border-radius: 15px;
-    border: 1px solid var(--accent-green);
+    border: 2px solid rgba(255, 0, 0, 0.3);
     overflow-x: auto;
+    box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1);
 }
 
 .contract-box code {
@@ -989,7 +1002,7 @@ body {
     color: var(--accent-green);
     font-size: 0.85rem;
     word-break: break-all;
-    text-shadow: 0 0 5px rgba(0, 217, 255, 0.3);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
 }
 
 /* ==========================================
@@ -1106,7 +1119,7 @@ body {
 
 .copy-box {
     background: var(--card-bg);
-    border: 2px solid var(--primary-orange);
+    border: 2px solid rgba(255, 0, 0, 0.5);
     padding: 1rem;
     border-radius: 50px;
     display: flex;
@@ -1115,11 +1128,12 @@ body {
     max-width: 600px;
     margin: 0 auto;
     transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.25);
 }
 
 .copy-box:hover {
-    box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
-    border-color: var(--accent-green);
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
 }
 
 .copy-box code {
@@ -1157,13 +1171,15 @@ body {
 .footer {
     padding: 2rem;
     background: var(--darker-bg);
-    border-top: 2px solid var(--primary-orange);
+    border-top: 3px solid rgba(255, 0, 0, 0.6);
     text-align: center;
     color: var(--text-secondary);
+    box-shadow: 0 -10px 40px rgba(255, 0, 0, 0.2);
 }
 
 .footer p {
     margin: 0.5rem 0;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
 }
 
 /* ==========================================
