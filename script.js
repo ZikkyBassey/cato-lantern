@@ -318,11 +318,11 @@ function showSpookyPumpkin() {
     overlay.appendChild(img);
     document.body.appendChild(overlay);
     
-    // Remove after animation
+    // Remove after 1 second
     setTimeout(() => {
         document.body.classList.remove('spooky-reveal');
         overlay.remove();
-    }, 3500);
+    }, 1000);
 }
 
 // Trigger spooky pumpkin on interactive elements
