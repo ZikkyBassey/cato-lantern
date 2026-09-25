@@ -51,7 +51,7 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#merch">Merch</a></li>
                 <li><a href="#tokenomics">Tokenomics</a></li>
-                <li><a href="#socials" class="cta-btn">Join Us</a></li>
+                <li><a href="https://pump.fun/coin/GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump?clip=20260916_074423%3A2545186_20260916_074353" target="_blank" class="cta-btn">Buy Now</a></li>
             </ul>
             <div class="price-ticker">
                 <span class="ticker-label">$CATO:</span>
@@ -79,26 +79,36 @@
                     The real king of Halloween has always been the black cat.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#socials" class="btn btn-primary">Get $CATO</a>
+                    <a href="https://pump.fun/coin/GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump?clip=20260916_074423%3A2545186_20260916_074353" target="_blank" class="btn btn-primary">Get $CATO</a>
                     <a href="#tokenomics" class="btn btn-secondary">Learn More</a>
                 </div>
                 <div class="social-proof">
                     <div class="proof-item">
-                        <span class="proof-number" id="memberCount">2,543</span>
+                        <span class="proof-number">75</span>
                         <span class="proof-label">Community Members</span>
                     </div>
                     <div class="proof-item">
-                        <span class="proof-number" id="holderCount">1,847</span>
+                        <span class="proof-number" id="holderCount">50</span>
                         <span class="proof-label">Token Holders</span>
                     </div>
                 </div>
                 <div class="token-contract">
                     <p class="contract-label">Contract Address:</p>
-                    <code class="contract-address">GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump</code>
+                    <div class="contract-copy-inline">
+                        <code class="contract-address" id="contractCode">GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump</code>
+                        <button class="copy-btn-inline" onclick="copyCAToClipboard()">Copy CA</button>
+                    </div>
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="images/cat-o-lantern-hero.png" alt="CAT O'LANTERN" class="hero-img" loading="lazy">
+                <div class="price-chart-container" id="priceChartContainer">
+                    <iframe 
+                        id="dexscreenerChart"
+                        src="https://dexscreener.com/solana/g1shmribqrmk8tbsvkrnyapbg8slrcuf92e54ynwjrja?embed=1&theme=dark&trades=0&info=0&chartLeftToolbar=0&chartCandles=240&chartTimeframe=1h" 
+                        style="width: 100%; height: 100%; border: none; border-radius: 3px;"
+                        allowfullscreen="">
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>

@@ -20,6 +20,29 @@ function copyToClipboard() {
     }
 }
 
+// Copy CA from hero section
+function copyCAToClipboard() {
+    const contract = 'GeNwBZWJcWQAkLDdty7geii9xSjtCuga1qE9DDzLpump';
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(contract).then(() => {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Copied!';
+            btn.style.background = '#1a6b3f';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }).catch(() => {
+            fallbackCopy(contract);
+        });
+    } else {
+        fallbackCopy(contract);
+    }
+}
+
 function fallbackCopy(text) {
     const textarea = document.createElement('textarea');
     textarea.value = text;
@@ -288,7 +311,6 @@ async function fetchLiveHolderData() {
         const dexData = await dexResponse.json();
         
         let holders = 0;
-        let communityMembers = 0;
         
         if (dexData.pairs && dexData.pairs.length > 0) {
             const pair = dexData.pairs[0];
@@ -297,36 +319,27 @@ async function fetchLiveHolderData() {
             const h24Buys = pair.txns?.h24?.buys || 0;
             
             // Estimate holders from transaction data
-            // Roughly: unique buyers = buys * 0.6 (accounting for repeat buys)
             holders = Math.max(Math.floor(h24Buys * 0.6), 50);
-            communityMembers = Math.floor(holders * 1.5);
         }
         
         // Fallback if no transaction data
         if (holders === 0) {
-            holders = 85;
-            communityMembers = 142;
+            holders = 50;
         }
         
-        const memberCountEl = document.getElementById('memberCount');
         const holderCountEl = document.getElementById('holderCount');
         
-        if (memberCountEl) {
-            animateCounter(memberCountEl, communityMembers, 2000);
-        }
         if (holderCountEl) {
             animateCounter(holderCountEl, holders, 2000);
         }
         
-        console.log(`Live Data - Estimated Holders: ${holders}, Community Members: ${communityMembers}`);
+        console.log(`Live Data - Estimated Holders: ${holders}`);
     } catch (error) {
         console.log('Live holder data failed, using fallback:', error);
         // Fallback numbers
-        const memberCountEl = document.getElementById('memberCount');
         const holderCountEl = document.getElementById('holderCount');
         
-        if (memberCountEl) animateCounter(memberCountEl, 2543, 2000);
-        if (holderCountEl) animateCounter(holderCountEl, 1847, 2000);
+        if (holderCountEl) animateCounter(holderCountEl, 50, 2000);
     }
 }
 
