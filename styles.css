@@ -146,18 +146,59 @@ body {
     }
 }
 
-@keyframes popIn {
+@keyframes bloodDrip {
     0% {
-        transform: scale(0) rotate(-20deg);
-        opacity: 0;
+        text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
     }
     50% {
-        transform: scale(1.1) rotate(5deg);
+        text-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 107, 53, 0.6);
     }
     100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
     }
+}
+
+@keyframes evilGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(255, 0, 0, 0.8), inset 0 0 30px rgba(255, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+    }
+}
+
+@keyframes creepShake {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-2px) rotate(-0.5deg); }
+    50% { transform: translateX(2px) rotate(0.5deg); }
+    75% { transform: translateX(-2px) rotate(-0.5deg); }
+}
+
+@keyframes skullFlash {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes redPulse {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        border-color: rgba(255, 107, 53, 0.5);
+    }
+    50% { 
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.8), 0 0 80px rgba(139, 0, 0, 0.5);
+        border-color: rgba(255, 0, 0, 0.8);
+    }
+}
+
+@keyframes haunted {
+    0% { transform: translateY(0) scaleX(1); filter: brightness(1); }
+    25% { transform: translateY(-5px) scaleX(0.98); filter: brightness(1.2); }
+    50% { transform: translateY(0) scaleX(1); filter: brightness(0.9); }
+    75% { transform: translateY(-3px) scaleX(0.99); filter: brightness(1.1); }
+    100% { transform: translateY(0) scaleX(1); filter: brightness(1); }
 }
 
 /* ==========================================
@@ -296,13 +337,15 @@ body {
     font-size: 4rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--light-orange) 100%);
+    background: linear-gradient(135deg, #ff0000 0%, #ff6b35 50%, #8b0000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-family: 'Creepster', cursive;
     letter-spacing: 3px;
     text-transform: uppercase;
+    animation: bloodDrip 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6));
 }
 
 .hero-subtitle {
@@ -435,14 +478,15 @@ body {
     font-weight: bold;
     text-align: center;
     margin-bottom: 4rem;
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-green) 100%);
+    background: linear-gradient(135deg, #ff0000 0%, #ff6b35 50%, #8b0000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-family: 'Creepster', cursive;
     letter-spacing: 2px;
     text-transform: uppercase;
-    animation: fadeInUp 0.6s ease-out;
+    animation: fadeInUp 0.6s ease-out, bloodDrip 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
 }
 
 .showcase-grid {
@@ -523,7 +567,7 @@ body {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(255, 107, 53, 0.3);
+    border: 2px solid rgba(255, 0, 0, 0.3);
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -537,9 +581,10 @@ body {
 
 .about-card:hover {
     transform: translateY(-10px) scale(1.05);
-    border-color: var(--primary-orange);
-    box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
-    background: rgba(255, 107, 53, 0.05);
+    border-color: #ff0000;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
+    background: rgba(255, 0, 0, 0.08);
+    animation: creepShake 0.4s ease-in-out;
 }
 
 .card-icon {
